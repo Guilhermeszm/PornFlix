@@ -1,0 +1,138 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VideoHub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <div id="user-login-overlay" class="overlay">
+            <div class="login-container">
+                <h2>User Login</h2>
+                <input type="text" id="user-username" placeholder="Username">
+                <input type="password" id="user-password" placeholder="Password">
+                <div class="auth-buttons">
+                    <button id="user-login-btn">Login</button>
+                    <button id="user-register-btn">Register</button>
+                    <button id="cancel-user-login-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="profile-overlay" class="overlay">
+            <div class="profile-container">
+                <h2>My Profile</h2>
+                <div class="profile-image-container">
+                    <img id="profile-image" src="" alt="Profile">
+                    <button id="change-avatar-btn">Change Photo</button>
+                    <input type="file" id="avatar-input" accept="image/*" style="display: none">
+                </div>
+                <input type="text" id="profile-name" placeholder="Display Name">
+                <textarea id="profile-bio" placeholder="Bio"></textarea>
+                <div class="profile-buttons">
+                    <button id="save-profile-btn">Save Changes</button>
+                    <button id="cancel-profile-btn">Cancel</button>
+                    <button id="logout-btn">Logout</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="login-overlay" class="overlay">
+            <div class="login-container">
+                <h2>Admin Login</h2>
+                <input type="password" id="admin-password" placeholder="Enter admin password">
+                <button id="login-btn">Login</button>
+                <button id="cancel-login-btn">Cancel</button>
+            </div>
+        </div>
+
+        <div id="upload-overlay" class="overlay">
+            <div class="upload-container">
+                <h2>Upload New Video</h2>
+                <input type="text" id="video-title" placeholder="Video Title" maxlength="100">
+                <textarea id="video-description" placeholder="Video Description" maxlength="500"></textarea>
+                <div class="file-input-container">
+                    <label for="thumbnail-input">Thumbnail Image:</label>
+                    <input type="file" id="thumbnail-input" accept="image/*">
+                    <div id="thumbnail-preview"></div>
+                </div>
+                <div class="file-input-container">
+                    <label for="video-input">Video File:</label>
+                    <input type="file" id="video-input" accept="video/*">
+                </div>
+                <div class="upload-buttons">
+                    <button id="submit-upload-btn">Upload</button>
+                    <button id="cancel-upload-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="video-player-overlay" class="overlay">
+            <div class="video-player-container">
+                <div class="video-player-header">
+                    <h2 id="player-title"></h2>
+                    <button id="close-player-btn"><i class="fas fa-times"></i></button>
+                </div>
+                <video id="video-player" controls disableRemotePlayback controlsList="nodownload nofullscreen"></video>
+                <div class="video-info">
+                    <p id="player-description"></p>
+                </div>
+                <div class="comments-section">
+                    <h3>Comments</h3>
+                    <div class="comment-input">
+                        <textarea id="comment-text" placeholder="Add a comment..."></textarea>
+                        <button id="post-comment-btn">Post</button>
+                    </div>
+                    <div id="comments-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <header>
+            <h1>VideoHub</h1>
+            <div class="header-actions">
+                <button id="upload-btn" class="hidden"><i class="fas fa-cloud-upload-alt"></i></button>
+                <button id="user-btn" class="hidden"><img id="header-avatar" src="" alt="Profile"></button>
+                <button id="login-user-btn"><i class="fas fa-user"></i></button>
+            </div>
+        </header>
+
+        <nav>
+            <ul class="nav-tabs">
+                <li class="active" data-tab="home"><i class="fas fa-home"></i> Home</li>
+                <li data-tab="search"><i class="fas fa-search"></i> Search</li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="home" class="tab-content active">
+                <div id="videos-container" class="videos-grid"></div>
+            </section>
+
+            <section id="search" class="tab-content">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search videos...">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div id="search-results" class="videos-grid"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p style="display: none">&copy; 2023 VideoHub - Modern Video Sharing Platform</p>
+            <p></p>
+        </footer>
+    </div>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "asyncstorage": "https://cdn.jsdelivr.net/npm/@react-native-async-storage/async-storage@1.18.2/+esm"
+        }
+    }
+    </script>
+    <script src="app.js" type="module"></script>
+</body>
+</html>
